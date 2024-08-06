@@ -1,0 +1,22 @@
+.navbar-container{
+    position: static;
+  }
+  div .navbar{
+    display:flex;
+    padding: 10px;
+    position: absolute;
+    top:8%;
+    right:10%;
+    float:right;
+  }
+  .navbar div{
+    margin-left: 35px;
+    transition: 0.3s ease-in-out;
+  }
+  .link{
+    text-decoration: none;
+    
+  }
+  .navbar div:hover{
+    transform:scale(1.1);
+  }

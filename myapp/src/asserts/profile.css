@@ -1,0 +1,13 @@
+.prof{
+    width:38%;
+    height:35%;
+    background-color: red;
+    position:absolute;
+    top:35%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-top: 10px;
+    left:35%;
+}

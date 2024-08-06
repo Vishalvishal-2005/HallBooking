@@ -1,0 +1,18 @@
+.ibody {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .iform {
+    height: 100%;
+    width: 50vw;
+    background-color: rgba(153, 148, 245, 0.949);
+    float: left; /* Add this to make the form and preview side by side */
+  }
+  
+  .ipre { 
+    width: 50vw;
+    height: 100%;
+    float: right; /* Add this to make the form and preview side by side */
+  }
+  

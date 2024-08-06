@@ -1,0 +1,66 @@
+.vsbody{
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width:100%;
+    background-color: #f2f2f2;
+}
+.vscenter{
+    width: 100%;
+    position: absolute;
+    top:47%;
+    left:0;
+  }
+  .vscenter .filter{
+    height: 100%;
+    position: relative;
+    border-radius:'7px';
+    float: left;
+    width: 25%;
+    margin-left: 33px;
+    margin-top: 29px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
+
+  }
+.vscenter .scard{
+    width:66%;
+    position: relative;
+    float: right; 
+    display:flex;
+    flex-wrap: wrap;
+    padding-left: 33px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    margin: 28px 20px;
+    max-height:30%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
+  }
+  .vscenter .scard img{
+    width:240px;
+    height:250px;
+  }
+  .scard .content{
+  position: relative;
+  left:45px;
+  width:600px;
+}
+.scard button{
+  background-color:tomato;
+  position:relative;
+  left:77%;
+  top:2%;
+  border-radius: 0;
+  
+  width:27%;
+}
+.pagination{
+  position: absolute;
+  width:20%;
+  height: 5%;
+  top:100%;
+  left:35%;
+}
+.pagination button{
+  width:50%;
+}
