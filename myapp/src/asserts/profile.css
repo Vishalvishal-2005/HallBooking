@@ -1,13 +1,32 @@
-.prof{
-    width:38%;
-    height:35%;
-    background-color: red;
+
+.profile{
+    width:27%;
+    height:90%;
     position:absolute;
-    top:35%;
-    display: flex;
-    flex-wrap: wrap;
+    top:5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
     border-radius: 8px;
-    padding-left: 15px;
-    padding-top: 10px;
-    left:35%;
+    padding-left: 65px;
+    left:3%;
+}
+.prof-background{
+    background-color:#FF8343;
+    background-size: cover;
+    height: 100vh;
+    
+}
+.profile-button button{
+    width:3%;
+    background-color: rgb(105, 106, 102);
+}
+.user-details{
+    transform: translate(51%,16%);
+    background-color: aqua;
+    padding-left: 40px;
+    width:65%;
+    height:40vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
+
+
+    
 }

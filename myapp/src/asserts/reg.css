@@ -2,3 +2,76 @@
     border:1px solid grey;
     width: 58vh;
 }
+/* Apply default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Ensure all images fit properly */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Make container elements flexible */
+  .container, .vcenter, .vpopular, .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Card adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .vpopular {
+      flex-direction: column;
+      align-items: center;
+    }
+    .vpopular .MuiCard-root {
+      width: 90% !important; /* Reduce card width */
+      margin-bottom: 10px;
+    }
+    h2, p {
+      text-align: center;
+    }
+    .header {
+      height: 30vh !important; /* Adjust banner size */
+    }
+  }
+  
+  /* Mobile-specific navbar adjustments */
+  @media (max-width: 600px) {
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .grid div {
+      width: 100%; /* Full width for small screens */
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    .hcontainer {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .vavailability img {
+      width: 80px; /* Adjust sizes for small screens */
+      height: 80px;
+    }
+  
+    .vpopular {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .grid {
+      grid-template-columns: repeat(2, 1fr); /* Adjust grid layout */
+    }
+  }
+  

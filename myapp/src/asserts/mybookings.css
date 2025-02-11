@@ -1,0 +1,94 @@
+.mybookings {
+    width: 90vw;
+    margin: 20px auto;
+    margin-top: 4%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    border:1px solid grey;
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+.mybookings:hover{
+    transform:scale(0.96);
+}
+.mybookings img {
+    border-radius: 8px;
+    margin-right: 20px;
+} 
+
+.book-contents {
+    display: flex;
+    flex-wrap: wrap;
+    width:60%;
+    justify-content: space-between;
+    
+}
+
+  .book-contents h4, .book-contents p {
+    margin-left: 60px;
+    margin-top: 16px;
+  }
+  .mybookings ul{
+    list-style-type: none; 
+}
+.mybookings li {
+    list-style-type: none;
+    padding: 10px 0;
+}
+
+.mybookings li:last-child {
+    list-style-type: none; 
+    border-bottom: none;
+}
+.mybookings h4 span{
+    margin-left: 18px;
+    color:#d23021;
+}
+.mybookings button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    position: relative;
+    top:40%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.mybook-container{
+    transform: translate(60%,80%);
+}
+.mybook-container div{
+    margin-left:5%;
+    padding-left: 24%;
+    width:24vw;
+    height:34vh;
+    font-size: 23px;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0,0,0.566);
+    transition: 0.3s ease-in-out;
+}
+.mybook-container div:hover{
+    transform: scale(1.1);
+}
+
+.mybookings li button:hover {
+    background-color: #c82333;
+}
+
+.details {
+    margin-top: 18%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    list-style-type: none; 
+}
+  

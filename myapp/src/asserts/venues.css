@@ -35,6 +35,10 @@
     margin: 28px 20px;
     max-height:30%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
+        transition: 0.3s ease-in-out;
+  }
+  .vscenter .scard:hover{
+    transform: scale(1.1);
   }
   .vscenter .scard img{
     width:240px;
@@ -46,7 +50,7 @@
   width:600px;
 }
 .scard button{
-  background-color:tomato;
+  background-color:#FF8343;
   position:relative;
   left:77%;
   top:2%;

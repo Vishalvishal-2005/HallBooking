@@ -1,99 +1,59 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import pt from '../asserts/images/photograph.jpeg';
+import '../asserts/profile.css';
 
-const Profile = ({ userId }) => {
-  const [profile, setProfile] = useState(null);
-  const [editing, setEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    email: '',
-    profilePicture: '',
-  });
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch(`http://localhost:3306/api/users/${userId}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setProfile(data);
-        setFormData({
-          email: data.email,
-          profilePicture: data.profilePicture,
-        });
-      } catch (error) {
-        console.error('Error fetching profile:', error);
-      }
-    };
-
-    fetchProfile();
-  }, [userId]);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(`http://localhost:3306/api/users/${profile.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      setProfile(data);
-      setEditing(false);
-    } catch (error) {
-      console.error('Error updating profile:', error);
-    }
-  };
-
-  if (!profile) return <div>Loading...</div>;
-
+function Profile({logins=[]}) {
   return (
-    <div>
-      <h1>Profile</h1>
-      <div>
-        <img src={profile.profilePicture} alt="Profile" />
-        <p>Username: {profile.username}</p>
-        <p>Email: {profile.email}</p>
-        {editing ? (
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>Email:</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <label>Profile Picture URL:</label>
-              <input
-                type="text"
-                name="profilePicture"
-                value={formData.profilePicture}
-                onChange={handleChange}
-              />
-            </div>
-            <button type="submit">Save</button>
-          </form>
-        ) : (
-          <button onClick={() => setEditing(true)}>Edit Profile</button>
-        )}
+    <div className='prof-background'>
+    <div className="container d-flex flex-wrap" style={{height:'90%',backgroundColor:'rgb(190, 204, 160)',width:'100%',transform:'translate(2%,5%)' }}>
+      <div className="card mb-4" style={{width: '30%', height: '95%',boxShadow: '0 0 10px rgba(0,0,0,0.566)'}}>
+        <div className="card-header text-center">
+          <img
+            src={pt}
+            className="rounded-circle"
+            style={{ width: '195px', height: '195px' }}
+            alt="profile"
+          />
+        </div>
+        <div className="card-body text-center" >
+          <h2 className="card-title">{logins.username}</h2>
+          <p className="card-text">Full Stack Developer</p>
+          <div className="mb-3">
+            <label>Email: </label>
+            <span>{logins.email}</span>
+          </div>
+          <div className="mb-3" style={{width: '100%'}}>
+            <label>Name: </label>
+            <span> Vishal P</span>
+          </div>
+          <div className="mb-3">
+            <label>Phone No: </label>
+            <span> +91 8148374326</span>
+          </div>
+          <div className="mb-3">
+            <label>Birth Date: </label>
+            <span> 13-04-2005</span>
+          </div>
+        </div>
+      </div>
+<div style={{float:'right',width:'67%',marginLeft:'30px'}}>
+      <div className="card mb-4 " style={{width: '100%', height: '45%',boxShadow: '0 0 10px rgba(0,0,0,0.566)'}}>
+        <div className="card-body">
+          <p><strong>Full Name:</strong> Vishal</p>
+          <p><strong>Email:</strong> 22ads.vishal.p@skct.edu.in</p>
+        </div>
+      </div>
+
+      <div className="card mb-4 mt-4" style={{width: '100%', height: '45%',boxShadow: '0 0 10px rgba(0,0,0,0.566)'}}>
+        <div className="card-body">
+          <p><strong>Full Name:</strong> Vishal</p>
+          <p><strong>Email:</strong> 22ads.vishal.p@skct.edu.in</p>
+        </div>
       </div>
     </div>
+  </div>
+  </div>
   );
-};
+}
 
 export default Profile;

@@ -1,33 +1,35 @@
 .hcontainer{
     width:100%;
     height: 100%;
-      overflow-x: hidden; /* Prevent horizontal scroll */
+   overflow-x: hidden; /* Prevent horizontal scroll */
 
-}
-.header{
+}.header{
   height: 40%;
   background-color: #4b544c;
   width:100%;
   position: absolute;
   top:0;
   left:0;
-}
-.title{
+}.title{
   font-size: 23px;
+  color: #ffff;
   display: flex;
-}
-.title p{
+}.title p{
   margin-top: 32px;
   margin-left: 6px;
-}
-
-
-.header h2{
+}.header h2{
   margin-top:50px;
   font-size:32px;
   font-weight: 600;
   color: aliceblue;
   text-shadow:#0f0c0c;
+}
+.header select{
+  position: relative;
+  left:21%;
+  width:20%;
+  height: 42px;
+  border: 1px solid grey;  
 }
 .header input{
 position: relative;
@@ -37,85 +39,72 @@ height: 42px;
 border: 1px solid grey;
 }
 .searb{
-background-color: rgb(255, 42, 0);
+background-color: #FF8343;
 height: 42px;
 width: 100px;
 position:relative;
-left:67.3%;
+left:67.8%;
 float:left;
 padding-top: 7px;
 text-align:center;
 font-size: 18px;
-
-}
-.search{
+}.search{
   width:40%;
   height:15%;
   position: relative;
   left:30%;
-}
-.hcenter{
+}.hcenter{
 width: 96%;
 position: absolute;
 top:41%;
 left:0;
-}
-.hcenter .howitworks{
+}.hcenter .howitworks{
   position: absolute;
   width:100%;
-  top:152%;
+  top:158%;
   display:block;
   font-size: 31px;
-}
-.hcenter .howitworks p{
+}.hcenter .howitworks p{
   text-align: center;
-}
-.hcenter .howitworks pre{
+  margin-bottom: 62px;
+}.hcenter .howitworks pre{
   font-size: 14px;
-}
-.hcenter .howitworks div{
-  
-}
-.hcenter .howitworks .hw-container{
+}.hcenter .howitworks .hw-container{
   display: flex;
-  position: relative;
-  
-}
-
- .hw-container div{
-  width:21vw;
+  position: relative; 
+}.hw-container div{
+    width:21vw;
   height: 18vw;
-  padding-left: 20px;
+  padding-left: 10px;
   margin-left:129px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
 }
-.hw-container div p{
-  font-size: 24px;
+.hw-container div h4{
+margin-left: 65px;
 }
-.hcenter .howitworks div img{
+.hw-container div p{
+  font-size: 16px;
+  font-weight: 500;
+  color:#4b544c; 
+}.hcenter .howitworks div img{
 width: 120px;
 margin-left: 70px;
 margin-top: 15px;
 height: 120px;
-}
-
-table{
+}table{
   width:100%;
   padding: 10px;
   overflow-x:hidden;
   margin-top: 28px;
   margin-left: 23px;
   border-collapse: collapse;
-}
-td img{
+}td img{
   width:75px;
   height:75px;
   transition: 0.3s ease-in-out;
-}
-td img:hover{
-  transform: scale(1.2);
-}
-td{
+}td img:hover{
+  transform: scale(1.3);
+}td{
   padding: 20px;
   margin-left: 40x;
   border-spacing: 60;
@@ -148,7 +137,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
 border-radius: 5px;
 }
 .vender td img:hover{
-transform: scale(1.1);
+transform: scale(1.2);
 }
 .vender td{
 padding: 10px;
@@ -171,34 +160,285 @@ height: 40%;
 position:absolute;
 top:220%;
 left:0%;
-}
-
-.contact-info {
+}.contact-info {
 float: left;
 position: relative;
 left:8%;
 margin-left: 70px;
-}
-.contact-info h4{
+}.contact-info h4{
 text-align: center;
-}
-.footer span{
+}.footer span{
 position: relative;
 margin-left: 25%;
 margin-top: 25%;
 text-align: center;
-}
-.formore{
+}.formore{
 display:flex;
 position: absolute;
 background-color: #0f0c0c;
-
-}
-.formore h4{
+}.formore h4{
 position: relative;
 left:6%;
-}
-.formore div{
+}.formore div{
 margin-right: 35px;
 margin-top: 60px;
 }
+@media only screen and (max-width: 1024px) {
+  .header h2 {
+    font-size: 28px;
+    margin-top: 30px;
+  }
+
+  .header input,
+  .header select {
+    width: 50%;
+  }
+
+  .hcenter {
+    width: 100%;
+  }
+
+  .hw-container div {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  td img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header h2 {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  .header input,
+  .header select {
+    width: 70%;
+  }
+
+  .hcenter .howitworks {
+    font-size: 24px;
+  }
+
+  .hw-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hw-container div {
+    width: 90%;
+    margin: 20px 0;
+    padding: 10px;
+  }
+
+  td img {
+    width: 50px;
+    height: 50px;
+  }
+
+  td {
+    padding: 10px;
+  }
+
+  .vender td img {
+    width: 100%;
+    height: auto;
+  }
+
+  .vender {
+    margin: 20px 0;
+  }
+}
+
+/* Small mobile screens (below 480px) */
+@media only screen and (max-width: 480px) {
+  .header h2 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .header input,
+  .header select {
+    width: 90%;
+  }
+
+  td img {
+    width: 40px;
+    height: 40px;
+  }
+
+  td {
+    padding: 5px;
+  }
+
+  .vender td img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Navbar code*/
+.navbar-container {
+  position: static;
+}
+
+div .navbar {
+  display: flex;
+  padding: 10px;
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  float: right;
+}
+
+.navbar div {
+  margin-left: 35px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.navbar div::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: rgb(255, 0, 102);
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.navbar div:hover::after,
+.navbar div.active::after {
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.navbar div:hover {
+  transform: scale(1.1);
+}
+.dropdown-container{
+
+}
+@media only screen and (max-width: 768px) {
+  .navbar-container {
+
+  }
+  
+  .navbar {
+    transform: translate(-10%,-3%);
+    margin-left:-100px;
+    width: 60%;
+    padding:0;
+  }
+
+  .navbar div {
+    font-size: 10px;
+    margin:0px 0;
+    margin-left: 2px;
+    width:40px;
+    text-align: center;
+    display: block;
+  }
+  
+  .navbar-container .title{
+    font-size: 16px;
+    margin-left: -34px;
+    margin-top: -10px;
+    cursor: pointer;
+  }
+  .navbar-container .title img{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .dropdown-container {
+    display: flex;
+    width: 290px; /* or width: 100% if you want it full-width */
+    height: 40px;
+    margin-left:12px;
+    color: white; /* To improve visibility of text */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .howitworks{
+    display: flex;
+    width:400vw;
+  }
+
+  .hw-container div{
+    width: 60%;
+  }
+/*  .hcenter .howitworks p{
+    text-align: center;
+    margin-bottom: 62px;
+  }
+  .hcenter .howitworks pre{
+    font-size: 14px;
+  }
+  .hcenter .howitworks .hw-container{
+    display: flex;
+  }
+  
+   .hw-container div{
+    width:20%;
+    height: 18%;
+    padding-left: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
+  }
+  .hw-container div h4{
+  margin-left: 65px;
+  }
+  .hw-container div p{
+    font-size: 16px;
+    font-weight: 500;
+    color:#4b544c;
+    
+  }
+  .hcenter .howitworks div img{
+  width: 120px;
+  margin-left: 70px;
+  margin-top: 15px;
+  height: 120px;
+  }*/
+  
+  
+  
+  
+}
+/*Navbar code ended*/

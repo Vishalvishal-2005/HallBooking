@@ -1,97 +1,77 @@
-// src/components/Signup.js
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import blackandwhite from '../asserts/images/black-and-white-flower.png';
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [formData, setFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (username && password && confirmPassword) {
-      if (password === confirmPassword) {
-        try {
-          const response = await fetch('http://localhost:3060/api/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, email, password }),
-          });
-
-          if (response.ok) {
-            alert('Sign up successful!');
-            setError('');
-            navigate('/SignIn');
-          } else {
-            const data = await response.json();
-            setError(data.message || 'Signup failed');
-          }
-        } catch (err) {
-          setError('An error occurred. Please try again.');
-        }
-      } else {
-        setError('Passwords do not match.');
-      }
-    } else {
+    const { username, email, password, confirmPassword } = formData;
+    if (!username || !email || !password || !confirmPassword) {
       setError('Please fill in all fields.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3060/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.text();
+        setError(data || 'Signup failed.');
+        return;
+      }
+
+      alert('Sign up successful!');
+      navigate('/signin');
+    } catch (err) {
+      setError('An error occurred. Please try again.');
     }
   };
 
   return (
     <div className='scn'>
+      <div className='scontainer-butterfly'>
+        <img src={blackandwhite} alt='butterfly'/>
+      </div>
       <div className="sncontainer">
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
+            <label>Username:</label>
+            <input type="text" name="username" placeholder='Username' value={formData.username} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <label>Email:</label>
+            <input type="email" name="email" placeholder='Email' value={formData.email} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <label>Password:</label>
+            <input type="password" name="password" placeholder='Password' value={formData.password} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
+            <label>Confirm Password:</label>
+            <input type="password" name="confirmPassword" placeholder='Re-Type Password' value={formData.confirmPassword} onChange={handleChange} required />
           </div>
           {error && <p className="error">{error}</p>}
           <button type="submit">Sign Up</button>
-          <div className="asksignup">You already have an Account? <Link to="/signin">Sign In</Link></div>
+          <div className="asksignup">Already have an account? <Link to="/signin">Sign In</Link></div>
         </form>
       </div>
     </div>

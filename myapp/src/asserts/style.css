@@ -1,6 +1,6 @@
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -11,6 +11,19 @@ body {
     background-image: url('../asserts/images/lbc.jpeg');
     height:100vh;
   }
+.welcome{
+  position: relative;
+  float: left;
+  top:25%;
+  left:12%;
+  font-size: 32px;
+}
+  .scn img{
+    float: left;
+    width:28%;
+    height:36%;
+    transform: translate(38%,50%);
+  }
   .container {
     background-color: white;
     padding: 20px;
@@ -19,16 +32,19 @@ body {
     width: 300px;
   }
   .sncontainer {
-    background-color: white;
+    background-color:rgba(255, 255, 255, 0.978);;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.566);
-    width: 350px;
+    float: right;
+    width: 390px;
     position: relative;
     top:18vh;
-    left:36%;
+    left:-19%;
   }
-  
+  .sncontainer-butterfly h1{
+    transform: translate(8%,46%);
+  }
   h2 {
     margin-bottom: 20px;
     text-align: center;
@@ -56,7 +72,7 @@ body {
     width: 100%;
     margin-top: 10.2px;
     padding: 10px;
-    background-color:tomato;
+    background-color:#FF8343;
     font-size: 18px;
     color: white;
     border: none;
@@ -96,4 +112,60 @@ body {
   position: relative;
   margin-top: 14%;
   margin-left: 4%;
+}
+.cbt img{
+  width:150px;
+  height:150px;
+  position: fixed;
+  left:90%;
+  color:aliceblue;
+  top:81%;
+  z-index: 20;
+}
+/* AdminAddVenue.css */
+
+
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.admin-body form {
+  display: flex;
+  margin-left: 14%;
+  flex-direction: column;
+  width:70%;
+}
+.admin-body input{
+  width:20%;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #3c3535;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input[type="number"] {
+  appearance: textfield;
 }
