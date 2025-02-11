@@ -8,6 +8,17 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 public class DemoApplication {
 
+	/**
+	 * The entry point of the Spring Boot application.
+	 *
+	 * This method starts the Spring application by invoking the
+	 * {@link SpringApplication#run(Class, String...)} method with the
+	 * specified application class and command-line arguments.
+	 *
+	 * @param args command-line arguments passed to the application
+	 * @throws IllegalArgumentException if the application class is null
+	 * @throws Exception if the application fails to start due to an error
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
