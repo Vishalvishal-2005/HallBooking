@@ -17,6 +17,23 @@ public class FileUploadController {
     private final String uploadDir = "C:/uploads/";
 
     @PostMapping("/upload")
+    /**
+     * Uploads an image file to the server.
+     *
+     * This method handles the uploading of an image file provided in the request.
+     * It checks if the file is empty and returns a bad request response if so.
+     * If the file is valid, it attempts to save the file to a specified directory,
+     * creating the directory if it does not exist. A unique filename is generated
+     * based on the current timestamp and the original filename. Upon successful
+     * upload, it returns the URL of the uploaded image.
+     *
+     * @param file the image file to be uploaded, must not be null
+     * @return a ResponseEntity containing the URL of the uploaded image if successful,
+     *         or an error message if the upload fails or if no file is uploaded
+     *
+     * @throws IllegalArgumentException if the provided file is null
+     * @throws IOException if an I/O error occurs during file writing
+     */
     public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {
             return ResponseEntity.badRequest().body("No file uploaded");

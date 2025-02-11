@@ -9,6 +9,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig {
 
     @Bean
+    /**
+     * Creates a new instance of {@link PasswordEncoder} using the BCrypt algorithm.
+     *
+     * @return a {@link PasswordEncoder} implementation that uses BCrypt for encoding passwords.
+     *
+     * @throws IllegalStateException if the password encoder cannot be created due to an internal error.
+     */
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
