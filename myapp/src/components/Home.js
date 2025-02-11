@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
@@ -21,13 +20,11 @@ import team from "../asserts/images/team.png";
 import venderbc from '../asserts/images/venderbc.png';
 import eng from "../asserts/images/wedding-rings.png";
 import wed from "../asserts/images/wedding.png";
-import Dropdown from './Dropdown';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Registeration from './RegistrationForms/Registeration';
 import VenderRegisteration from './RegistrationForms/VenderRegisteration';
 import { useUser } from '../components/UserContext';
-
 
 const categories = [
   { img: wed, alt: "Wedding", text: "Wedding" },
@@ -45,24 +42,24 @@ const vendors = [
   { img: flower, alt: "flower", text: "Flowers" },
   { img: cake, alt: "cake", text: "Cake" },
   { img: cater, alt: "caterer", text: "Caterer" },
-
 ];
+
 function Home({ setIsAuthenticated }) {
   const [visible, setVisible] = useState(false);
   const [openv, setOpenv] = useState(false);
   const [opencbv, setOpencbv] = useState(false);
   const navigate = useNavigate();
-  const show = () =>{
+  
+  const show = () => {
     navigate('/venues');
   };
-  const { user } = useUser();
-  console.log('User from Context:', user);
   
+  const { user } = useUser();
+
   if (!user) {
     return <p>User not logged in. Please sign in first.</p>;
   }
-  
-  
+
   const sh = () => setOpenv(true);
   const cbsh = () => {
     setOpencbv(!opencbv);
@@ -90,7 +87,7 @@ function Home({ setIsAuthenticated }) {
       display: 'flex',
       paddingLeft: '40px',
       borderRadius: '10px',
-      backgroundColor: 'transperant',
+      backgroundColor: 'transparent',
     },
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -103,34 +100,30 @@ function Home({ setIsAuthenticated }) {
     backgroundPosition: 'center',
     height: '40vh',
   };
-  console.log(localStorage.getItem('data'));
+
   return (
     <div className="hcontainer">
       <div className="header" style={bcstyle}>
         <Navbar />
         <h2>Find & Book The Best Venue For Every Single Event</h2>
-     <Dropdown/>
       </div>
+      
       <div className="cbt" style={{ backgroundColor: '#ffff', width: '2%', cursor: 'pointer' }} onClick={cbsh}>
-            {opencbv ? (
-              <img 
-                src={closeIcon} // Close icony
-                alt="Close ChatBot" 
-                style={{ width: '60px', height: '60px', marginLeft: '26px', marginTop: '26px',   transition: 'transform 0.3s ease, opacity 0.3s ease', // Add transform and opacity transitions
-                  transform: 'scale(1.1)', // Slightly scale up the close icon
-                  opacity: 1   }} // Smaller size for the close icon
-              />
-            ) : (
-              <img 
-                src={cb} // Chatbot icon
-                alt="Open ChatBot" 
-                style={{ width: '110px', height: '110px',       transition: 'transform 0.3s ease, opacity 0.3s ease, border-radius 0.3s ease', // Add transition for transform, opacity, and border-radius
-                  transform: 'scale(0.9)', // Slightly scale down the chatbot icon
-                  opacity: 0.8, // Slightly faded out
-                  borderRadius: '50%' }} // Larger size for the chatbot icon
-              />
-            )}
-          </div>
+        {opencbv ? (
+          <img 
+            src={closeIcon}
+            alt="Close ChatBot" 
+            style={{ width: '60px', height: '60px', marginLeft: '26px', marginTop: '26px' }}
+          />
+        ) : (
+          <img 
+            src={cb}
+            alt="Open ChatBot" 
+            style={{ width: '110px', height: '110px', borderRadius: '50%' }}
+          />
+        )}
+      </div>
+
       <div className="hcenter">
         <table cellPadding="10%">
           <tbody>
@@ -150,7 +143,6 @@ function Home({ setIsAuthenticated }) {
           <table cellPadding="10%">
             <tbody>
               <tr>
-            
                 {vendors.map(({ img, alt, text }) => (
                   <td key={alt} style={{ textAlign: 'center' }}>
                     <img src={img} onClick={sh} alt={alt} className="table-image" />
@@ -161,20 +153,21 @@ function Home({ setIsAuthenticated }) {
             </tbody>
           </table>
         </div>
+
         <div className='howitworks'>
           <p>How It Works?</p>
           <div className='hw-container'>
-            <div class="#">
+            <div>
               <img src={searchh} alt="Browse Venues" className="table-image" />
               <h4>Browse Venues</h4>
               <p>Check out the best suited Venues, compare photos, special offers and function packages.</p>
             </div>
-            <div class="#">
+            <div>
               <img src={quote} alt="Request Quotes" className="table-image" />
               <h4>Request Quotes</h4>
               <p>Get custom quotes of your short-listed Venues at the click of GET FREE QUOTES button.</p>
             </div>
-            <div class="#">
+            <div>
               <img src={bookh} alt="Book a Venue" className="table-image" />
               <h4>Book a Venue</h4>
               <p>Select and Book the perfect venue in no time at all. Time is money, save both.</p>
@@ -182,55 +175,24 @@ function Home({ setIsAuthenticated }) {
           </div>
         </div>
       </div>
+
       <br />
       <Footer />
-      <Modal
-        isOpen={visible}
-        style={customStyles}
-        onRequestClose={() => setVisible(false)}
-        contentLabel="Request Quote Modal"
-      >
+
+      <Modal isOpen={visible} style={customStyles} onRequestClose={() => setVisible(false)}>
         <Registeration onClose={() => setVisible(false)} />
       </Modal> 
-      <Modal
-        isOpen={openv}
-        style={customStyle}
-        onRequestClose={() => setOpenv(false)}
-        contentLabel="Vendor Registration Modal"
-      >
+
+      <Modal isOpen={openv} style={customStyle} onRequestClose={() => setOpenv(false)}>
         <img src={venderbc} style={{ width: '40%', height: '60%', marginTop: '15%' }} alt='Vendor Background' />
         <VenderRegisteration onClose={() => setOpenv(false)} />
       </Modal>
-      <Modal
-    isOpen={opencbv}
-    contentLabel="ChatBot Modal"
-    style={{
-      content: {
-        top: '44%',
-        left: '86%',
-        padding:'0',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        zIndex:'100',
-        transform: 'translate(-50%, -50%)',
-      },
-      overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0)',
-      }
-    }}
-  >
-<iframe
-    allow="microphone;"
-    width="350"
-    height="430"
-    src="https://console.dialogflow.com/api-client/demo/embedded/260387af-7df5-4749-b735-95239b7f9574">
-</iframe>
+
+      <Modal isOpen={opencbv} style={{ content: { top: '44%', left: '86%', padding: '0' } }}>
+        <iframe title="Chatbot" allow="microphone;" width="350" height="430" src="https://console.dialogflow.com/api-client/demo/embedded/260387af-7df5-4749-b735-95239b7f9574"></iframe>
       </Modal>
     </div>
   );
 }
 
 export default Home;
- 
