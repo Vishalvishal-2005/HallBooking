@@ -44,12 +44,41 @@ const vendors = [
   { img: cater, alt: "caterer", text: "Caterer" },
 ];
 
+/**
+ * Home component that serves as the main entry point for the venue booking application.
+ * It displays a header, categories of venues, vendors, and a chatbot interface.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Function} props.setIsAuthenticated - Function to set the authentication state.
+ * @returns {JSX.Element} The rendered Home component.
+ *
+ * @throws {Error} Throws an error if the user is not logged in.
+ *
+ * @example
+ * // Example usage of the Home component
+ * <Home setIsAuthenticated={setAuth} />
+ */
 function Home({ setIsAuthenticated }) {
   const [visible, setVisible] = useState(false);
   const [openv, setOpenv] = useState(false);
   const [opencbv, setOpencbv] = useState(false);
   const navigate = useNavigate();
   
+  /**
+   * Navigates the user to the '/venues' route.
+   *
+   * This function is typically used in response to user actions, such as clicking a button,
+   * to redirect the user to a different part of the application.
+   *
+   * @function show
+   * @returns {void} This function does not return a value.
+   *
+   * @example
+   * // Example usage of the show function
+   * document.getElementById('navigateButton').addEventListener('click', show);
+   *
+   * @throws {Error} Throws an error if navigation fails due to an invalid route or other issues.
+   */
   const show = () => {
     navigate('/venues');
   };
