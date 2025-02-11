@@ -2,6 +2,26 @@ import { faFacebook, faInstagram, faTwitter, faWhatsapp } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 
+/**
+ * Footer component that renders the footer section of the webpage.
+ * This component includes contact information and social media links.
+ *
+ * @returns {JSX.Element} The rendered footer element containing contact info and social media links.
+ *
+ * @example
+ * // Usage in a React component
+ * function App() {
+ *   return (
+ *     <div>
+ *       <Header />
+ *       <MainContent />
+ *       <Footer />
+ *     </div>
+ *   );
+ * }
+ *
+ * @throws {Error} Throws an error if the component fails to render properly.
+ */
 function Footer() {
   return (
     <footer className="footer bg-dark text-white py-4 mt-4">
