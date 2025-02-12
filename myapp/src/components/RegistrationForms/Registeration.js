@@ -3,6 +3,21 @@ import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogActions, G
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useUser } from '../UserContext';
 
+/**
+ * A component that handles the registration process for booking a venue.
+ * It allows users to fill out a form with their details and submit a booking request.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.venue - The venue details for the booking.
+ * @param {Function} props.onClose - Callback function to close the dialog.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @throws {Error} Throws an error if the booking submission fails.
+ *
+ * @example
+ * <Registration venue={venueData} onClose={handleClose} />
+ */
 const Registration = ({ venue, onClose }) => {
   const { user } = useUser();
   
@@ -29,6 +44,25 @@ const Registration = ({ venue, onClose }) => {
     setBooking({ ...booking, [name]: value });
   };
 
+  /**
+   * Handles the submission of a booking form.
+   *
+   * This asynchronous function prevents the default form submission behavior,
+   * validates the required fields, and sends a POST request to the booking API.
+   * It manages loading states and error/success messages based on the response.
+   *
+   * @param {Event} e - The event object representing the form submission event.
+   *
+   * @throws {Error} Throws an error if the booking submission fails due to network issues or server errors.
+   *
+   * @returns {Promise<void>} A promise that resolves when the submission process is complete.
+   *
+   * @example
+   * // Example usage within a React component
+   * const handleFormSubmit = (event) => {
+   *   handleSubmit(event);
+   * };
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     
