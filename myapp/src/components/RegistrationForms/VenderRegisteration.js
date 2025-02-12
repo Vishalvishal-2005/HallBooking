@@ -5,6 +5,24 @@ import React, { useState, useEffect } from 'react';
 import '../../asserts/reg.css';
 import { useUser } from '../UserContext';
 
+/**
+ * A functional component that handles the vendor registration process.
+ * It allows users to fill out a form with their details and submit a booking request for a selected vendor.
+ *
+ * @param {Object} props - The properties object.
+ * @param {function} props.onClose - A callback function to close the registration form.
+ * @param {Object} props.selectedVendor - The vendor selected for booking, containing vendor details.
+ * @param {string} props.selectedVendor.id - The unique identifier of the selected vendor.
+ * @param {string} props.selectedVendor.name - The name of the selected vendor.
+ * @param {string} props.selectedVendor.description - A description of the selected vendor.
+ * @param {string} props.selectedVendor.imageUrl - The URL of the vendor's image.
+ *
+ * @returns {JSX.Element} The rendered registration form component.
+ *
+ * @throws {Error} Throws an alert if the user is not logged in or if no vendor is selected.
+ *
+ * @example
+ * const handleClose = () => { /* Logic to close the form */
 const VenderRegisteration = ({ onClose, selectedVendor }) => {
   const { user } = useUser(); // User is stored directly, no need for user.id
 
@@ -27,6 +45,22 @@ const VenderRegisteration = ({ onClose, selectedVendor }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  /**
+   * Handles the submission of a booking form.
+   *
+   * This asynchronous function prevents the default form submission behavior, validates user and vendor selection,
+   * constructs a request payload, and sends it to the server to create a booking. It also handles success and error
+   * responses from the server.
+   *
+   * @param {Event} e - The event object representing the form submission event.
+   * @throws {Error} Throws an error if the booking request fails.
+   *
+   * @example
+   * // Example usage within a React component
+   * const handleFormSubmit = (event) => {
+   *   handleSubmit(event);
+   * };
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     
