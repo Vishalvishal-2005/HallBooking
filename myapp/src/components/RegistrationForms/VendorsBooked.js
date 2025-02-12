@@ -6,6 +6,20 @@ import { Button, Modal } from 'react-bootstrap'; // Import Modal and Button from
 import { Link, useNavigate } from 'react-router-dom';
 import '../../asserts/Admin.css';
 
+/**
+ * A functional component that manages the display and interaction with booked vendors.
+ * It allows searching, editing, and deleting vendor information.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} [props.vendorbooked=[]] - An array of booked vendors.
+ * @param {Function} props.setVendorbooked - A function to update the booked vendors state.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * // Example usage of VendorsBooked component
+ * <VendorsBooked vendorbooked={vendors} setVendorbooked={setVendors} />
+ */
 const VendorsBooked = ({ vendorbooked = [],setVendorbooked }) => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
@@ -49,6 +63,22 @@ const VendorsBooked = ({ vendorbooked = [],setVendorbooked }) => {
     }
   };
 
+  /**
+   * Handles the click event for deleting a vendor.
+   *
+   * This function sends a DELETE request to the specified API endpoint to remove a vendor
+   * identified by the given ID. Upon a successful response, it updates the state to remove
+   * the deleted vendor from the list of booked vendors. If the response indicates an error,
+   * it throws an error with a descriptive message.
+   *
+   * @param {string} id - The unique identifier of the vendor to be deleted.
+   * @throws {Error} Throws an error if the deletion fails or if the response is not ok.
+   * @returns {void}
+   *
+   * @example
+   * // Example usage of handleDeleteClick
+   * handleDeleteClick('12345');
+   */
   const handleDeleteClick = (id) => {
     fetch(`https://hallbooking-backend-9e8d.onrender.com/api/vendors/${id}`, { 
       method: 'DELETE',
