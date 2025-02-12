@@ -21,6 +21,20 @@ import jwel from '../asserts/images/necklace.png';
 import make from '../asserts/images/make-up.png';
 import invite from '../asserts/images/invitation.png';
 import axiosInstance from './axiosinstance';
+/**
+ * A functional component that displays a list of event vendors and allows users to request quotes.
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.addUser - A function to add a user, typically used for vendor registration.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * // Example usage of the Venders component
+ * <Venders addUser={handleAddUser} />
+ *
+ * @throws {Error} Throws an error if there is an issue fetching the vendor data from the API.
+ */
 function Venders({ addUser }) {
   const [venues, setVenues] = useState([]);
   const [visible, setVisible] = useState(false);
