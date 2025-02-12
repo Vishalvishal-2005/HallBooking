@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import blackandwhite from '../asserts/images/black-and-white-flower.png';
 
+/**
+ * Signup component for user registration.
+ *
+ * This component handles user input for the signup process, including username, email, password, and password confirmation.
+ * It validates the input fields and communicates with the backend API to create a new user account.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered signup form.
+ *
+ * @example
+ * <Signup />
+ */
 const Signup = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
   const [error, setError] = useState('');
@@ -11,6 +23,28 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Handles the form submission for user signup.
+   * This function validates the input fields, checks for matching passwords,
+   * and sends a POST request to the user registration API.
+   *
+   * @async
+   * @function handleSubmit
+   * @param {Event} e - The event object representing the form submission event.
+   * @throws {Error} Throws an error if the API request fails or if there are validation issues.
+   *
+   * @example
+   * // Example usage in a form component
+   * <form onSubmit={handleSubmit}>
+   *   <input type="text" name="username" />
+   *   <input type="email" name="email" />
+   *   <input type="password" name="password" />
+   *   <input type="password" name="confirmPassword" />
+   *   <button type="submit">Sign Up</button>
+   * </form>
+   *
+   * @returns {Promise<void>} A promise that resolves when the signup is successful.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
