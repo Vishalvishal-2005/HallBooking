@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import ImageUpload from "./ImageUpload";
 
+/**
+ * A React functional component that allows an admin to add a new vendor.
+ * It includes a form for entering vendor details such as name, category,
+ * description, and image upload functionality.
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.onVendorAdded - Callback function to be called
+ * when a vendor is successfully added.
+ *
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * <AdminAddVendor onVendorAdded={() => console.log('Vendor added!')} />
+ */
 const AdminAddVendor = ({ onVendorAdded }) => {
   const [vendor, setVendor] = useState({
     name: "",
@@ -13,6 +27,25 @@ const AdminAddVendor = ({ onVendorAdded }) => {
     setVendor({ ...vendor, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Handles the image upload process by sending the selected file to a specified server endpoint.
+   *
+   * This function checks if a file is provided, creates a FormData object to hold the file,
+   * and sends it to the server using a POST request. It handles the response and alerts the user
+   * about the success or failure of the upload.
+   *
+   * @async
+   * @param {File} file - The image file to be uploaded. If no file is provided, an alert is shown.
+   * @returns {Promise<void>} A promise that resolves when the upload process is complete.
+   *
+   * @throws {Error} Throws an error if there is an issue during the fetch operation or if the response is not ok.
+   *
+   * @example
+   * const imageFile = document.querySelector('input[type="file"]').files[0];
+   * handleImageUpload(imageFile)
+   *   .then(() => console.log('Upload completed'))
+   *   .catch(error => console.error('Upload failed:', error));
+   */
   const handleImageUpload = async (file) => {
     if (!file) {
       alert("Please select an image");
