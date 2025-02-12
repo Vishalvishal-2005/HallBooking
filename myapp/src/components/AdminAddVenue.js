@@ -5,6 +5,17 @@ import { Link } from 'react-router-dom';
 // AdminAddVenue.js
 import React, { useState } from 'react';
 
+/**
+ * A functional component that provides an interface for administrators to add new venues.
+ * It manages the state of the venue details and handles form submission to a backend API.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component containing the venue addition form.
+ *
+ * @example
+ * // Usage in a parent component
+ * <AdminAddVenue />
+ */
 const AdminAddVenue = () => {
   const [venue, setVenue] = useState({
     name: '',
@@ -22,6 +33,23 @@ const AdminAddVenue = () => {
     });
   };
   
+  /**
+   * Handles the submission of a venue form.
+   *
+   * This asynchronous function prevents the default form submission behavior,
+   * sends a POST request to the venue API with the venue data, and manages
+   * the response. If the venue is added successfully, it resets the venue state.
+   * If there is an error, it logs the error and alerts the user.
+   *
+   * @param {Event} e - The event object representing the form submission event.
+   *
+   * @throws {Error} Throws an error if the fetch operation fails or if the response
+   *                 from the server indicates a failure to add the venue.
+   *
+   * @example
+   * // Example usage within a form component
+   * <form onSubmit={handleSubmit}>
+   *   {/* form fields here */
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -19,6 +19,19 @@ const bcstyle = {
   textAlign: 'center'
 };
 
+/**
+ * A functional component that manages vendor bookings for a user.
+ * It fetches the user's vendor bookings from an API and allows the user to cancel a booking.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component containing the bookings and a modal for cancellation confirmation.
+ *
+ * @example
+ * // Usage of VendorsBookings component
+ * <VendorsBookings />
+ *
+ * @throws {Error} Throws an error if the user is not found or not logged in when attempting to fetch bookings.
+ */
 const VendorsBookings = () => {
   const { user } = useUser(); 
   const [vendorbooked, setVendorbooked] = useState([]);
@@ -47,6 +60,27 @@ const VendorsBookings = () => {
     setSuccessMessage(""); // Reset previous success message
   };
 
+  /**
+   * Handles the cancellation of a selected booking.
+   * This function checks if the selected booking is valid and then
+   * sends a DELETE request to the backend API to cancel the booking.
+   * If the cancellation is successful, it updates the state to reflect
+   * the changes and displays a success message. If the booking data
+   * is invalid or if the cancellation fails, appropriate error messages
+   * are logged to the console.
+   *
+   * @function handleCancel
+   * @throws {Error} Throws an error if the fetch request fails or if
+   *                 the selected booking data is invalid.
+   *
+   * @example
+   * // Assuming selectedBooking is set and valid
+   * handleCancel();
+   *
+   * @example
+   * // If selectedBooking is null or has no valid booking id
+   * handleCancel(); // Logs "Invalid booking data:" to the console
+   */
   const handleCancel = () => {
     if (!selectedBooking || !selectedBooking.booking.id) {
       console.error("Invalid booking data:", selectedBooking);

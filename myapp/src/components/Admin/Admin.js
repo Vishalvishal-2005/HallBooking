@@ -6,6 +6,15 @@ import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../asserts/Admin.css';
 
+/**
+ * Admin component that manages the display and interaction with user bookings.
+ * It fetches booking data from an API, allows searching, updating, and deleting bookings.
+ *
+ * @component
+ * @example
+ * // Usage in a React application
+ * <Admin />
+ */
 const Admin = () => {
   const [search, setSearch] = useState('');
   const [users, setUsers] = useState([]); // Initialize as an empty array

@@ -14,6 +14,19 @@ const bcstyle = {
   height: '40vh',
 };
 
+/**
+ * MyBooking component that fetches and displays user bookings.
+ * It allows users to cancel their bookings.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered MyBooking component.
+ *
+ * @example
+ * // Usage of MyBooking component
+ * <MyBooking />
+ *
+ * @throws {Error} Throws an error if fetching bookings fails or if the user is not logged in.
+ */
 const MyBooking = () => {
   const [bookings, setBookings] = useState([]);
   const [error, setError] = useState('');
@@ -21,6 +34,22 @@ const MyBooking = () => {
 
   useEffect(() => {
     console.log("User MyBooking:", user); 
+    /**
+     * Asynchronously fetches booking data for the currently logged-in user.
+     * If the user is not logged in, an error message is set.
+     * If an error occurs during the fetch operation, it logs the error and sets an error message.
+     *
+     * @async
+     * @function fetchBookings
+     * @throws {Error} Throws an error if the fetch operation fails or if the user is not logged in.
+     * @returns {Promise<void>} A promise that resolves when the booking data has been fetched and processed.
+     *
+     * @example
+     * // Example usage of fetchBookings
+     * fetchBookings()
+     *   .then(() => console.log("Bookings fetched successfully"))
+     *   .catch(error => console.error("Error:", error));
+     */
     const fetchBookings = async () => {
       if (user) { 
         try {
@@ -44,6 +73,24 @@ const MyBooking = () => {
     fetchBookings();
   }, [user]);
 
+  /**
+   * Cancels a booking by sending a DELETE request to the booking API.
+   *
+   * This asynchronous function takes a booking ID and an index, sends a request to delete the specified booking,
+   * and updates the local state of bookings if the request is successful.
+   *
+   * @param {string} bookingId - The unique identifier of the booking to be canceled.
+   * @param {number} index - The index of the booking in the local state array to be removed.
+   *
+   * @returns {Promise<void>} A promise that resolves when the operation is complete.
+   *
+   * @throws {Error} Throws an error if there is a network issue or if the request fails.
+   *
+   * @example
+   * handleCancel('12345', 0)
+   *   .then(() => console.log('Cancellation process completed.'))
+   *   .catch(error => console.error('Cancellation failed:', error));
+   */
   const handleCancel = async (bookingId, index) => {
     try {
       const response = await fetch(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/${bookingId}`, {

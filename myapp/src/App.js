@@ -24,6 +24,18 @@ import Venders from './components/Venders';
 import VendorsBookings from './components/VendorsBookings';
 import VenuesBookings from './components/VenuesBookings';
 
+/**
+ * Main application component that manages the state and routing of the application.
+ * It fetches data for users, vendors, and bookings from an API and provides this data
+ * to various routes within the application.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered application component containing the router and routes.
+ *
+ * @example
+ * // Usage in a React application
+ * <App />
+ */
 const App = () => {
   const [vendorbooked, setVendorbooked] = useState([]);
   const [users, setUsers] = useState([]);
@@ -31,6 +43,27 @@ const App = () => {
   const [cancellationCount, setCancellationCount] = useState(0);
 
   useEffect(() => {
+    /**
+     * Asynchronously fetches a list of administrators from the specified API endpoint.
+     *
+     * This function sends a GET request to the backend service to retrieve admin data.
+     * If the request is successful, the data is parsed as JSON and passed to the `setUsers` function.
+     * In case of a failed request or an error during the fetch operation, appropriate error messages are logged to the console.
+     *
+     * @async
+     * @function fetchAdmins
+     * @returns {Promise<void>} A promise that resolves when the fetch operation is complete.
+     *
+     * @throws {Error} Throws an error if there is a problem with the fetch operation.
+     *
+     * @example
+     * // Fetch admins and handle the result
+     * fetchAdmins().then(() => {
+     *   console.log('Admins fetched successfully');
+     * }).catch((error) => {
+     *   console.error('Failed to fetch admins:', error);
+     * });
+     */
     const fetchAdmins = async () => {
       try {
         const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/bookings/1');
@@ -49,6 +82,28 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    /**
+     * Asynchronously fetches vendor data from the specified API endpoint.
+     *
+     * This function sends a GET request to the vendors API and processes the response.
+     * If the response is successful, it parses the JSON data and updates the vendor state.
+     * In case of an error during the fetch operation or if the response is not ok,
+     * it logs an appropriate message to the console.
+     *
+     * @async
+     * @function fetchVendors
+     * @returns {Promise<void>} A promise that resolves when the fetch operation is complete.
+     *
+     * @throws {Error} Throws an error if there is a problem with the fetch operation.
+     *
+     * @example
+     * // Fetch and log vendor data
+     * fetchVendors().then(() => {
+     *   console.log('Vendors fetched successfully');
+     * }).catch((error) => {
+     *   console.error('Error fetching vendors:', error);
+     * });
+     */
     const fetchVendors = async () => {
       try {
         const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/vendors');
@@ -68,6 +123,28 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    /**
+     * Asynchronously fetches user data from the specified API endpoint.
+     *
+     * This function makes a GET request to the user API and processes the response.
+     * If the request is successful, it parses the JSON data and updates the logins state.
+     * In case of an unsuccessful response or an error during the fetch operation,
+     * appropriate messages are logged to the console.
+     *
+     * @async
+     * @function fetchUsers
+     * @returns {Promise<void>} A promise that resolves when the fetch operation is complete.
+     *
+     * @throws {Error} Throws an error if there is an issue with the fetch operation.
+     *
+     * @example
+     * // Fetch users and handle the result
+     * fetchUsers().then(() => {
+     *   console.log('Users fetched successfully');
+     * }).catch((error) => {
+     *   console.error('Error fetching users:', error);
+     * });
+     */
     const fetchUsers = async () => {
       try {
         const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/users');
