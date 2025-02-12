@@ -1,5 +1,5 @@
 export const addVendor = async (vendorData) => {
-    const response = await fetch("http://localhost:3060/api/vendors", {
+    const response = await fetch("https://hallbooking-backend-9e8d.onrender.com/api/vendors", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

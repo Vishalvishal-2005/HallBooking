@@ -46,7 +46,7 @@ const Registration = ({ venue, onClose }) => {
         venueImage: booking.venueImage,
       };
 
-      const res = await fetch(`http://localhost:3060/api/bookings/${user}/venues/${venue.id}`, {
+      const res = await fetch(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/${user}/venues/${venue.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

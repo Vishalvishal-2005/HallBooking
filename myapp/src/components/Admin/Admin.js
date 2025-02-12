@@ -13,7 +13,7 @@ const Admin = () => {
   const [showVendorReg, setShowVendorReg] = useState(false); // State to show/hide Registration modal
 
   useEffect(() => {
-    fetch('http://localhost:3060/api/bookings/admin/all')
+    fetch('https://hallbooking-backend-9e8d.onrender.com/api/bookings/admin/all')
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) { // Check if data is an array

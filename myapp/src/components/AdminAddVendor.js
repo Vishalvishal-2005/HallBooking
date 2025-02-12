@@ -23,7 +23,7 @@ const AdminAddVendor = ({ onVendorAdded }) => {
       const formData = new FormData();
       formData.append("file", file);
   
-      const response = await fetch("http://localhost:3060/api/images/upload", {
+      const response = await fetch("https://hallbooking-backend-9e8d.onrender.com/api/images/upload", {
         method: "POST",
         body: formData,
       });

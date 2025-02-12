@@ -5,6 +5,7 @@ import '../asserts/mybookings.css';
 import Dropdown from './Dropdown';
 import Navbar from './Navbar';
 import { useUser } from "./UserContext";
+import axiosInstance from './axiosinstance';
 
 const bcstyle = {
   backgroundImage: `url(${bcimg})`,
@@ -23,7 +24,7 @@ const MyBooking = () => {
     const fetchBookings = async () => {
       if (user) { 
         try {
-          const response = await fetch(`http://localhost:3060/api/bookings/${user}`);
+          const response = axiosInstance.get(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/${user}`);
           if (response.ok) {
             const data = await response.json();
             console.log("Fetched Booking Data:", data);
@@ -45,7 +46,7 @@ const MyBooking = () => {
 
   const handleCancel = async (bookingId, index) => {
     try {
-      const response = await fetch(`http://localhost:3060/api/bookings/${bookingId}`, {
+      const response = await fetch(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/${bookingId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
       });

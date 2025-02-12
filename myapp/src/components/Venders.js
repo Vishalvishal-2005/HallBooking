@@ -20,13 +20,13 @@ import travel from '../asserts/images/bus.png';
 import jwel from '../asserts/images/necklace.png';
 import make from '../asserts/images/make-up.png';
 import invite from '../asserts/images/invitation.png';
-
+import axiosInstance from './axiosinstance';
 function Venders({ addUser }) {
   const [venues, setVenues] = useState([]);
   const [visible, setVisible] = useState(false);
   const [selectedVendor, setSelectedVendor] = useState(null); // Store selected vendor
   useEffect(() => {
-    axios.get('http://localhost:3060/api/vendors')
+    axiosInstance.get('/api/vendors')
       .then(response => {
         console.log(response.data); // Debugging
         setVenues(response.data);

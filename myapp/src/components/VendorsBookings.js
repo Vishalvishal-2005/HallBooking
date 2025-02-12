@@ -5,6 +5,7 @@ import '../asserts/mybookings.css';
 import Dropdown from './Dropdown';
 import Navbar from './Navbar';
 import { useUser } from "./UserContext"; // Import the user context
+import axiosInstance from './axiosinstance';
 
 const bcstyle = {
   backgroundImage: `url(${bcimg})`,
@@ -31,7 +32,7 @@ const VendorsBookings = () => {
       return;
     }
 
-    fetch(`http://localhost:3060/api/bookings/vendor/${user}`)
+    fetch(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/vendor/${user}`)
       .then(response => response.json())
       .then(data => {
         console.log("Fetched Data:", data);
@@ -54,7 +55,7 @@ const VendorsBookings = () => {
   
     const { booking, index } = selectedBooking;
   
-    fetch(`http://localhost:3060/api/bookings/vendor/${booking.id}`, {  
+    fetch(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/vendor/${booking.id}`, {  
       method: 'DELETE',
     })
     .then(response => {

@@ -51,7 +51,7 @@ const VenderRegisteration = ({ onClose, selectedVendor }) => {
     console.log("Sending Data:", requestData);
 
     try {
-      const response = await axios.post(`http://localhost:3060/api/bookings/${user}`, requestData); // Use user directly
+      const response = await axios.post(`https://hallbooking-backend-9e8d.onrender.com/api/bookings/${user}`, requestData); // Use user directly
 
       if (response.status === 200) {
         alert('Booking Successful!');

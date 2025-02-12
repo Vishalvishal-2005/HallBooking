@@ -25,7 +25,7 @@ const AdminAddVenue = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3060/api/venues', {
+      const response = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/venues', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

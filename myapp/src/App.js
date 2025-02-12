@@ -6,6 +6,7 @@ import './asserts/style.css';
 import Admin from './components/Admin/Admin';
 import AdminVender from "./components/Admin/AdminLog";
 import AdminUsers from './components/Admin/AdminUsers';
+import AdminAddVendor from "./components/AdminAddVendor";
 import AdminAddVenue from "./components/AdminAddVenue";
 import Chatbot from "./components/Chatbot";
 import Home from './components/Home';
@@ -18,11 +19,10 @@ import VendorsBooked from "./components/RegistrationForms/VendorsBooked";
 import SignIn from './components/SignIn';
 import Signup from './components/Signup';
 import Venues from './components/UI/Venues';
+import { UserProvider } from "./components/UserContext"; // Import UserProvider
 import Venders from './components/Venders';
 import VendorsBookings from './components/VendorsBookings';
 import VenuesBookings from './components/VenuesBookings';
-import { UserProvider } from "./components/UserContext"; // Import UserProvider
-import AdminAddVendor from "./components/AdminAddVendor";
 
 const App = () => {
   const [vendorbooked, setVendorbooked] = useState([]);
@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const res = await fetch('http://localhost:3060/api/bookings/1');
+        const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/bookings/1');
         if (res.ok) {
           const data = await res.json();
           setUsers(data);
@@ -51,7 +51,7 @@ const App = () => {
   useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const res = await fetch('http://localhost:3060/api/vendors');
+        const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/vendors');
         if (res.ok) {
           const data = await res.json();
           setVendorbooked(data);
@@ -70,7 +70,7 @@ const App = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch('http://localhost:3060/api/users');
+        const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/users');
         if (res.ok) {
           const data = await res.json();
           setLogins(data);

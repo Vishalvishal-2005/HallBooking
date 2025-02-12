@@ -50,7 +50,7 @@ const VendorsBooked = ({ vendorbooked = [],setVendorbooked }) => {
   };
 
   const handleDeleteClick = (id) => {
-    fetch(`http://localhost:3060/api/vendors/${id}`, { 
+    fetch(`https://hallbooking-backend-9e8d.onrender.com/api/vendors/${id}`, { 
       method: 'DELETE',
     })
       .then(response => {
