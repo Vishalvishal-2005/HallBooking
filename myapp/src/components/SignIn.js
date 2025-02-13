@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useUser } from './UserContext'; // Import UserContext
+import { useUser } from './UserContext';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useUser(); // Get login function from context
+  const { login } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,23 +15,26 @@ const SignIn = () => {
     try {
       const res = await fetch(`https://hallbooking-backend-9e8d.onrender.com/api/users/signin`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({ email, password }),
       });
 
+      const text = await res.text();
+      console.log("🔍 Raw Response:", text);
+
       if (!res.ok) {
-        const errorMsg = await res.text();
-        setError(errorMsg || 'Failed to sign in. Please try again.');
+        setError(text || 'Failed to sign in. Please try again.');
         return;
       }
 
-      const data = await res.json(); // Parse response as JSON
-      console.log('Raw Response:', data);
+      const data = JSON.parse(text); // Parse JSON response
+      console.log('✅ Server Response:', data);
 
       if (data.user && data.user.id) {
         login(data.user.id);
-        console.log('\nId detail:', data.user.id);
-        
         sessionStorage.setItem('token', data.token);
         localStorage.setItem('isAuthenticated', 'true');
 
@@ -41,7 +44,7 @@ const SignIn = () => {
         setError('Invalid response from server.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('❌ Error:', error);
       setError('Failed to sign in. Please try again.');
     }
   };
