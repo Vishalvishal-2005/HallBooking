@@ -13,7 +13,7 @@ const SignIn = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://hallbooking-backend-9e8d.onrender.com/api/users/signin', {
+      const res = await fetch(`https://hallbooking-backend-9e8d.onrender.com/api/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
