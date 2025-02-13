@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from './UserContext';
 
+/**
+ * SignIn component for user authentication.
+ *
+ * This component provides a user interface for signing in to the hall booking system.
+ * It handles user input for email and password, submits the data to the server,
+ * and manages the authentication state.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered SignIn component.
+ *
+ * @example
+ * <SignIn />
+ *
+ * @throws {Error} Throws an error if the sign-in process fails due to network issues or server errors.
+ */
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +24,23 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { login } = useUser();
 
+  /**
+   * Handles the submission of the sign-in form.
+   *
+   * This asynchronous function prevents the default form submission behavior,
+   * sends a POST request to the sign-in API with the user's email and password,
+   * and processes the response. It manages user authentication by storing tokens
+   * in session and local storage upon successful sign-in.
+   *
+   * @param {Event} e - The event object representing the form submission event.
+   *
+   * @throws {Error} Throws an error if the sign-in process fails due to network issues
+   *                 or if the server response is not valid.
+   *
+   * @example
+   * // Example usage in a form submission context
+   * document.getElementById('signInForm').addEventListener('submit', handleSubmit);
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
